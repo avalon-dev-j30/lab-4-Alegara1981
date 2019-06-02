@@ -1,6 +1,10 @@
 package ru.avalon.java.tcp;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -36,11 +40,11 @@ public final class TcpReceiver {
      *
      * @return серверный сокет, связанный с портом {@code port}.
      */
-    private static ServerSocket prepareServerSocket(int port) {
+    private static ServerSocket prepareServerSocket(int port) throws IOException {
         /*
          * TODO Реализовать метод prepareServerSocket класса TcpReceiver
          */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        return new ServerSocket(port);
     }
 
     /**
@@ -51,11 +55,18 @@ public final class TcpReceiver {
      *
      * @return строковое сообщение.
      */
-    private static String receive(Socket socket) {
+    private static String receive(Socket socket) throws IOException {
         /*
          * TODO Реализовать метод receive класса TcpReceiver
          */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        InputStream stream = socket.getInputStream();
+        if(stream.available() > 0){
+            Reader reader = new InputStreamReader(stream);
+            BufferedReader in = new BufferedReader(reader);
+            String received = in.readLine();
+            return received;
+        }
+        return " ";
     }
 
 }

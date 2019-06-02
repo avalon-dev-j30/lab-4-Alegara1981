@@ -3,6 +3,7 @@ package ru.avalon.java.udp;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 
 /**
@@ -39,7 +40,7 @@ public final class UdpSender {
         /*
          * TODO Реализовать метод prepareMessage класса UdpSender
          */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        return "Ping";
     }
 
     /**
@@ -51,7 +52,7 @@ public final class UdpSender {
         /*
          * TODO Реализовать метод prepareAddress класса UdpSender
          */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        return new InetSocketAddress("127.0.0.1", 8080);
     }
 
     /**
@@ -64,7 +65,8 @@ public final class UdpSender {
         /*
          * TODO Реализовать метод createSocket класса UdpSender
          */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        DatagramSocket socket = new DatagramSocket();
+        return socket;
     }
 
     /**
@@ -78,7 +80,8 @@ public final class UdpSender {
         /*
          * TODO Реализовать метод pack класса UdpSender
          */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        return new DatagramPacket(message.getBytes(), message.getBytes().length);
+        
     }
 
 }
